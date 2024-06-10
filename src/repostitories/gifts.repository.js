@@ -38,6 +38,15 @@ class GiftsRepository {
       throw error;
     }
   }
+
+  async getAllProducts() {
+    try {
+      const products = await ProdRequirements.findAll();
+      return products;
+    } catch (error) {
+      throw error;
+    }
+  }
   
   
 }

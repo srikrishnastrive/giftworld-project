@@ -23,6 +23,14 @@ class GiftsService {
     async createQuote(quoteData){
         return await this.giftsRepository.createQuote(quoteData);
     }
+
+    async getAllProducts() {
+        try {
+          return await this.giftsRepository.getAllProducts();
+        } catch (error) {
+          throw error;
+        }
+      }
 }
 
 module.exports = GiftsService;
