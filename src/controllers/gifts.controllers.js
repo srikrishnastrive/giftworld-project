@@ -81,44 +81,6 @@ async function createProductRequirements(req, res, next) {
   }
 }
 
-async function createProductRequirements(req, res, next) {
-    try {
-        // Check if photo file is included in the request
-        if (!req.files || !req.files.photo) {
-            return res.status(StatusCodes.BAD_REQUEST).json({
-                success: false,
-                message: 'Photo file is required',
-                error: {},
-                data: null
-            });
-        }
-
-        const productData = req.body;
-        const photoFile = req.files.photo[0];
-        productData.photo = photoFile.path;
-
-        // Call the service function to create the product requirements
-        const createdProduct = await giftsService.createProductRequirements(productData);
-
-        const baseUrl = `${req.protocol}://${req.get('host')}`;
-        const photoUrl = `${baseUrl}/uploads/${photoFile.filename}`;
-        const videoUrl = createdProduct.video ? `${baseUrl}/uploads/${createdProduct.video}` : null;
-
-        return res.status(StatusCodes.CREATED).json({
-            success: true,
-            message: 'Product created successfully',
-            error: {},
-            data: {
-                ...createdProduct.dataValues,
-                photoUrl,
-                videoUrl
-            }
-        });
-    } catch (error) {
-        console.error('Error creating product:', error);
-        next(error);
-    }
-}
 
 
 async function createQuoteForProduct(req, res, next) {

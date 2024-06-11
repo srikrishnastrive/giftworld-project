@@ -26,7 +26,7 @@ const ProdRequirement = sequelize.define('ProdRequirement', {
   },
   video: {
     type: DataTypes.STRING(500),
-    allowNull: true,
+    allowNull: false,
   },
   price: {
     type: DataTypes.INTEGER,
@@ -44,7 +44,7 @@ const ProdRequirement = sequelize.define('ProdRequirement', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: 'User', // Adjust the model name as per your User model definition
+      model: 'users', 
       key: 'User_id',
     },
   },
