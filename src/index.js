@@ -26,8 +26,8 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 
-app.listen(PORT, async () => {
-    console.log(`Server started at PORT : ${PORT}`);
+app.listen(8000, async () => {
+    console.log(`Server started at PORT : ${8000}`);
 
 });
 
